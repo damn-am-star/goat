@@ -38,19 +38,22 @@ There will be $n+2$ PDFs generated.
 
 Go to the `src` directory, and run `perl build-sop.pl` to compile the documents.
 
-Currently, the template assumes you're applying to UPenn, UIUC, and U of T.
-It compiles to the following files:
+Currently, the template assumes you're applying to UPenn, UIUC, U of T, and Network.
+It compiles the following files into `src/dist/`:
 
 ```
-src/sop-penn.pdf
-src/sop-uiuc.pdf
-src/sop-uoft.pdf
-src/sop-all.pdf
-src/sop-null.pdf
+src/dist/sop-penn.pdf
+src/dist/sop-uiuc.pdf
+src/dist/sop-uoft.pdf
+src/dist/sop-network.pdf
+src/dist/sop-all.pdf
+src/dist/sop-null.pdf
 ```
 
 As the name suggests, `sop-null.pdf` contains no school-specific content,
 and `sop-all.pdf` contains all school-specific content.
+
+Generated PDFs are placed in `src/dist/`; LaTeX intermediate files remain in `src/out/`.
 
 In `sop.tex`, you can use:
 
@@ -68,7 +71,7 @@ You probably want to add more schools, here's how.
 Open `build-sop.pl`, and you'll see this line:
 
 ```perl
-my @schools = qw/Penn Uiuc UofT/;
+my @schools = qw/Penn Uiuc UofT Network/;
 ```
 
 You can add more school names (no whitespace allowed), for instance if you want

@@ -4,8 +4,9 @@ use strict;
 use warnings FATAL => 'all';
 
 system 'mkdir', '-p', 'out';
+system 'mkdir', '-p', 'dist';
 
-my @schools = qw/Penn Uiuc UofT/;
+my @schools = qw/Penn Uiuc UofT Network/;
 sub pdflatexWithPrefix {
   system 'pdflatex', '-halt-on-error', '-output-directory', 'out', $_[0] . '\input{sop.tex}';
 }
@@ -21,7 +22,7 @@ sub pdflatex1 {
   pdflatexWithPrefix(latexDef($_[0]));
 }
 sub moveFile {
-  system 'cp', 'out/sop.pdf', 'sop-' . $_[0] . '.pdf';
+  system 'cp', 'out/sop.pdf', 'dist/sop-' . $_[0] . '.pdf';
 }
 sub pdflatex {
   my ($school) = @_;
